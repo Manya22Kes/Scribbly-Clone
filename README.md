@@ -174,4 +174,13 @@ On Render:
 
 Render sits behind a proxy, and the server reads the player's address from the `x-forwarded-for` header so bans work there.
 
+### Optional: client on Vercel
+
+The server cannot run on Vercel, but the React client can. Keep the server on Render and deploy `client/` to Vercel (root directory `client`, framework Vite). Then set:
+
+- On Vercel: `VITE_SERVER_URL` = the Render URL, for example `https://scribbly-m0ln.onrender.com`
+- On Render: `CLIENT_ORIGIN` = the Vercel URL, for example `https://your-app.vercel.app` (comma separated for several)
+
+With neither variable set, the client and server are same-origin, as in the Render-only setup above.
+
 Vercel and Netlify do not fit the backend. They run serverless functions, which cannot hold a long-lived WebSocket connection, and this game also keeps room state in process memory. Render and Railway run a normal long-lived server, so both work. The trade-off of in-memory state is that a restart wipes all rooms and the app cannot be scaled past one instance without adding something like Redis.

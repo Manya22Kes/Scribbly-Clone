@@ -12,7 +12,15 @@ const clientDir = path.resolve(here, '../../client/dist')
 
 const app = express()
 const server = http.createServer(app)
-const io = new Server(server, { maxHttpBufferSize: 1e5 })
+// Only needed when the client is hosted on another origin (e.g. Vercel).
+const clientOrigins = (process.env.CLIENT_ORIGIN ?? '')
+  .split(',')
+  .map((o) => o.trim().replace(/\/+$/, ''))
+  .filter(Boolean)
+const io = new Server(server, {
+  maxHttpBufferSize: 1e5,
+  ...(clientOrigins.length > 0 && { cors: { origin: clientOrigins } }),
+})
 const rooms = new Map()
 
 app.get('/health', (_req, res) => res.json({ ok: true, rooms: rooms.size }))

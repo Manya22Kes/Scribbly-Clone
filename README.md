@@ -2,7 +2,7 @@
 
 A multiplayer drawing and guessing game in the style of skribbl.io. One player draws a word, everyone else races to guess it. Built with React, TypeScript, Express and Socket.IO.
 
-**Live demo:** https://scribbly-m0ln.onrender.com
+**Live demo:** https://scribbly-clone.vercel.app
 
 Render's free tier sleeps after a while, so the first load can take about 30 seconds.
 

@@ -1,0 +1,6 @@
+{
+  "animals": ["elefante", "jirafa", "pingüino", "canguro", "delfín", "pulpo", "mariposa", "cocodrilo", "ardilla", "flamenco", "erizo", "pavo real", "medusa", "camaleón", "tigre", "cebra", "camello", "conejo", "tortuga", "búho", "tiburón", "araña", "murciélago", "loro", "caracol"],
+  "objects": ["paraguas", "telescopio", "mochila", "linterna", "tijeras", "bicicleta", "teclado", "auriculares", "vela", "brújula", "martillo", "espejo", "globo", "escalera", "calculadora", "maleta", "micrófono", "reloj de arena", "ancla", "cámara", "guitarra", "llave", "sofá", "robot", "cohete"],
+  "actions": ["nadar", "dormir", "bailar", "pintar", "cocinar", "escalar", "pescar", "patinar", "estornudar", "silbar", "reír", "correr", "leer", "cantar", "surfear", "tejer", "bostezar", "cavar", "boxear", "acampar", "esquiar", "escribir", "saludar", "saltar", "conducir"],
+  "food": ["pizza", "hamburguesa", "tortilla", "sándwich", "palomitas", "pastel", "espagueti", "sandía", "piña", "brócoli", "sushi", "taco", "queso", "plátano", "aguacate", "galleta", "fideos", "helado", "chocolate", "fresa", "calabaza", "paella", "churros", "empanada", "arroz"]
+}

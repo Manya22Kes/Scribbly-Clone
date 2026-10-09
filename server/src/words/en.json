@@ -1,0 +1,6 @@
+{
+  "animals": ["elephant", "giraffe", "penguin", "kangaroo", "dolphin", "octopus", "butterfly", "crocodile", "squirrel", "flamingo", "hedgehog", "peacock", "jellyfish", "chameleon", "tiger", "zebra", "camel", "rabbit", "turtle", "owl", "shark", "spider", "bat", "parrot", "lobster", "snail", "whale", "monkey", "panda", "horse"],
+  "objects": ["umbrella", "telescope", "backpack", "lantern", "scissors", "bicycle", "keyboard", "headphones", "candle", "compass", "hammer", "mirror", "balloon", "ladder", "calculator", "toothbrush", "suitcase", "microphone", "wheelchair", "hourglass", "anchor", "camera", "guitar", "key", "clock", "lamp", "sofa", "robot", "rocket", "bridge"],
+  "actions": ["swimming", "sleeping", "dancing", "painting", "cooking", "climbing", "fishing", "skating", "juggling", "sneezing", "whistling", "laughing", "running", "reading", "singing", "surfing", "knitting", "hiccups", "yawning", "digging", "boxing", "camping", "skiing", "typing", "waving", "stretching", "jumping", "kicking", "driving", "crying"],
+  "food": ["pizza", "burger", "pancake", "sandwich", "popcorn", "cupcake", "spaghetti", "watermelon", "pineapple", "broccoli", "pretzel", "sushi", "taco", "donut", "cheese", "banana", "avocado", "cookie", "noodles", "omelette", "lollipop", "mushroom", "carrot", "coconut", "waffle", "icecream", "chocolate", "strawberry", "pumpkin", "samosa"]
+}

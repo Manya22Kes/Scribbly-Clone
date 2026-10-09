@@ -795,3 +795,144 @@ textarea:focus {
   flex: none;
   max-width: 100%;
 }
+
+/* Loading screen */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 45;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  padding: 24px 16px;
+  background: var(--bg);
+  transition: opacity 0.4s ease;
+}
+
+.loader.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-title {
+  position: relative;
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.loader-scribble {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  bottom: -6px;
+  height: 8px;
+  border-radius: 8px;
+  background: var(--accent);
+  opacity: 0.85;
+  clip-path: polygon(0 60%, 12% 20%, 25% 70%, 38% 20%, 50% 70%, 62% 20%, 75% 70%, 88% 20%, 100% 60%, 100% 100%, 0 100%);
+}
+
+.loader-avatars {
+  display: grid;
+  grid-template-columns: repeat(6, 52px);
+  gap: 14px;
+  justify-content: center;
+}
+
+.loader-avatar {
+  display: grid;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.loader-avatar .avatar {
+  box-shadow: var(--shadow);
+}
+
+.loader-avatar.show {
+  opacity: 1;
+  transform: scale(1);
+  animation: loader-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards,
+    loader-bob 1.8s ease-in-out 0.5s infinite;
+}
+
+.loader-bar {
+  width: min(360px, 80vw);
+  height: 12px;
+  border-radius: 12px;
+  background: var(--line);
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  border-radius: 12px;
+  background-size: 28px 28px;
+  transition: width 0.25s ease-out;
+  animation: loader-stripes 0.8s linear infinite;
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.28) 75%,
+    transparent 75%
+  );
+  background-color: var(--accent);
+}
+
+.loader-text {
+  min-height: 44px;
+  max-width: 320px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@keyframes loader-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-20deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes loader-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes loader-stripes {
+  to {
+    background-position: 28px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .loader-avatars {
+    grid-template-columns: repeat(4, 52px);
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader-avatar.show {
+    animation: none;
+  }
+
+  .loader-fill {
+    animation: none;
+  }
+}

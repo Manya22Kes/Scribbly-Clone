@@ -4,11 +4,14 @@ import type { ChatMessage, GameState, ViewState } from './types'
 import Home from './pages/Home'
 import Lobby from './pages/Lobby'
 import Game from './pages/Game'
+import Loader from './components/Loader'
 
 export default function App() {
   const [state, setState] = useState<ViewState | null>(null)
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [toast, setToast] = useState('')
+  const [connected, setConnected] = useState(socket.connected)
+  const [introDone, setIntroDone] = useState(false)
   const [name, setName] = useState(() => localStorage.getItem('scribbly-name') ?? '')
   const [avatar, setAvatar] = useState(() => Number(localStorage.getItem('scribbly-avatar') ?? 0) || 0)
 
@@ -31,7 +34,9 @@ export default function App() {
       if (result.correct && result.playerId === socket.id) setToast(`Correct! +${result.points} points`)
     }
 
+    const onConnect = () => setConnected(true)
     const onDisconnect = () => {
+      setConnected(false)
       setState(null)
       setMessages([])
       setToast('Disconnected from the server')
@@ -39,6 +44,7 @@ export default function App() {
     }
 
     socket.on('game_state', onState)
+    socket.on('connect', onConnect)
     socket.on('disconnect', onDisconnect)
     socket.on('chat_message', onChat)
     socket.on('error_msg', onError)
@@ -46,6 +52,7 @@ export default function App() {
     socket.on('guess_result', onGuessResult)
     return () => {
       socket.off('game_state', onState)
+      socket.off('connect', onConnect)
       socket.off('disconnect', onDisconnect)
       socket.off('chat_message', onChat)
       socket.off('error_msg', onError)
@@ -96,6 +103,7 @@ export default function App() {
   return (
     <>
       {screen}
+      {(!introDone || !connected) && <Loader connected={connected} onFinish={() => setIntroDone(true)} />}
       {toast && <div className="toast">{toast}</div>}
     </>
   )
